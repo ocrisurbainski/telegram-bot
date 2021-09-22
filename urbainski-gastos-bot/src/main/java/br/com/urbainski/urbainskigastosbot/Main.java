@@ -29,7 +29,7 @@ import br.com.urbainski.urbainskigastosbot.util.UpdateUtil;
 public class Main {
 
     private static final Logger logger = Logger.getLogger(Main.class.getName());
-    private static final String TOKEN_ARGUMENT = "-t=";
+    private static final String TOKEN_ARGUMENT = "token";
     private static final int LIMIT_UPDATES = 100;
     private static final String TOKEN_SEPARATED_COMMAND = " ";
     private static final String TOKEN_COMMAND_START = "/";
@@ -193,18 +193,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String tokenBot = null;
-
-        if (args != null && args.length > 0) {
-
-            for (String arg : args) {
-
-                if (arg.startsWith(TOKEN_ARGUMENT)) {
-
-                    tokenBot = arg.substring(arg.indexOf("=") + 1);
-                }
-            }
-        }
+        String tokenBot = System.getProperty(TOKEN_ARGUMENT);
 
         if (Objects.isNull(tokenBot)) {
 
